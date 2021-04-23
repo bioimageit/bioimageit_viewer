@@ -1,5 +1,5 @@
-from bioimageit_viewer.readers.tiffimage import TiffImageReaderBuilder
-from bioimageit_viewer.viewers.napari import ImageViewerBuilder
+from bioimageit_viewer.readers.csvtable import CSVTableReaderBuilder
+from bioimageit_viewer.viewers.table import TableViewerBuilder
 
 
 class ObjectFactory:
@@ -27,7 +27,7 @@ class ViewerServiceProvider(ObjectFactory):
 
 
 readerService = ReaderServiceProvider()
-readerService.register_builder('tifimage', TiffImageReaderBuilder())
+readerService.register_builder('csvtable', CSVTableReaderBuilder())
 
 viewerService = ViewerServiceProvider()
-viewerService.register_builder('image', ImageViewerBuilder())
+viewerService.register_builder('table', TableViewerBuilder())
