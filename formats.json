@@ -1,18 +1,16 @@
 {
-    "metadata": {
-        "service": "LOCAL"
-    },
-    "process": {
-        "service": "LOCAL",
-        "xml_dirs": [
-            "../galaxytools/tools/"
-        ],
-        "categories_file": "../galaxytools/shed/categories.json"
-    },
-    "runner": {
-        "service": "LOCAL"
-    },
-    "user":{
-        "name": "Sylvain Prigent"
-    }
+    "formats": [
+        {
+            "name": "trackmatemodel",
+            "extension": ".xml",
+            "reader": "trackmatemodel",
+            "viewer": "napari"
+        },
+        {
+            "name": "imagetiff",
+            "extension": ".tif",
+            "reader": "imagetiff",
+            "viewer": "napari"
+        }
+    ]
 }

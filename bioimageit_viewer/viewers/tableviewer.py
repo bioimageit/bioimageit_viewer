@@ -16,8 +16,8 @@ class TableViewerBuilder:
             self._instance = TableViewer()
         return self._instance
 
-class TableViewer(BiViewer):
 
+class TableViewer(BiViewer):
     def __init__(self):
         super().__init__()
 
@@ -36,10 +36,12 @@ class TableViewer(BiViewer):
             df = bidata.df
             col_count = len(df.head())
             tableWidget.setColumnCount(col_count)
+
+            tableWidget.setHorizontalHeaderLabels(df.head())
+
             tableWidget.setRowCount(len(df))
             for i in range(len(df)):
                 for j in range(col_count):
-                    print("iloc=", df.iloc[i,j])
                     tableWidget.setItem(i, j, QTableWidgetItem(str(df.iloc[i,j])))
 
         else:

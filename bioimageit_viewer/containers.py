@@ -134,11 +134,9 @@ class BiDisplayPlan:
                 plan_json = json.load(json_file)
                 for region_json in plan_json['plan']:
                     region = BiDisplayRegion()
-                    print('region=', region_json)
                     region.position = region_json['position']
                     region.widget = region_json['widget']
                     for data_json in region_json['data']:
-                        print(data_json)
                         region.data_list.append(
                             BiDisplayData(data_json['uri'],
                                           data_json['format']))

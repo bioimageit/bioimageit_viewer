@@ -1,6 +1,9 @@
 from bioimageit_viewer.readers.csvtable import CSVTableReaderBuilder
-from bioimageit_viewer.viewers.table import TableViewerBuilder
+from bioimageit_viewer.readers.trackmatemodel import TrackmateModelReaderBuilder
+from bioimageit_viewer.readers.imagetiff import ImageTiffReaderBuilder
 
+from bioimageit_viewer.viewers.tableviewer import TableViewerBuilder
+from bioimageit_viewer.viewers.napariviewer import NapariViewerBuilder
 
 class ObjectFactory:
     def __init__(self):
@@ -28,6 +31,9 @@ class ViewerServiceProvider(ObjectFactory):
 
 readerService = ReaderServiceProvider()
 readerService.register_builder('csvtable', CSVTableReaderBuilder())
+readerService.register_builder('trackmatemodel', TrackmateModelReaderBuilder())
+readerService.register_builder('imagetiff', ImageTiffReaderBuilder())
 
 viewerService = ViewerServiceProvider()
 viewerService.register_builder('table', TableViewerBuilder())
+viewerService.register_builder('napari', NapariViewerBuilder())
