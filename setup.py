@@ -22,6 +22,7 @@ setup(
     install_requires=[
         "pyside2",
         "napari",
-        "pandas"
+        "pandas",
+        "scikit-image"
     ],
     )
