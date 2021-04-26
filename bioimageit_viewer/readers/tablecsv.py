@@ -1,11 +1,9 @@
-import numpy as np
-from skimage import io
-
+import pandas as pd
 from bioimageit_viewer.containers import BiData
 from bioimageit_viewer.definitions import BiReader
 
 
-class ImageTiffReaderBuilder:
+class TableCsvReaderBuilder:
     """Service builder for the csv table reader service"""
 
     def __init__(self):
@@ -13,17 +11,18 @@ class ImageTiffReaderBuilder:
 
     def __call__(self, **_ignored):
         if not self._instance:
-            self._instance = ImageTiffReader()
+            self._instance = TableCsvReader()
         return self._instance
 
 
-class ImageTiffReader(BiReader):
+class TableCsvReader(BiReader):
     def __init__(self):
         super().__init__()
 
     def read(self, file):
         self.file = file
-        bidata = BiData()
-        bidata.name = 'ndimage'
-        bidata.array = io.imread(self.file)
-        return bidata
+        df = pd.read_csv(self.file)
+        data = BiData()
+        data.name = 'pandasdataframe'
+        data.df = df
+        return data

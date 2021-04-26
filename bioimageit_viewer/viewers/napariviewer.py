@@ -1,9 +1,10 @@
 import napari
-from PyQt5.QtWidgets import (QApplication, QWidget, QVBoxLayout, QTableWidget,
+from PySide2.QtWidgets import (QApplication, QWidget, QVBoxLayout, QTableWidget,
                                QTableWidgetItem)
 
 from bioimageit_viewer.definitions import BiViewer
 from bioimageit_viewer.containers import BiData
+
 
 class NapariViewerBuilder:
     """Service builder for the table viewer service"""
@@ -25,7 +26,7 @@ class NapariViewer(BiViewer):
 
         viewer = napari.Viewer(show=False)
         for bidata in self.data_list:
-            if bidata.name == 'imagetiff':
+            if bidata.name == 'ndimage':
                 viewer.add_image(bidata.array, name=bidata.name)
             elif bidata.name == 'trackmatemodel':
                 viewer.add_tracks(bidata.tracks, name='trackmatemodel')

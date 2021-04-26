@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget, QGridLayout
+from PySide2.QtWidgets import QWidget, QGridLayout
 
 from bioimageit_viewer.factories import readerService, viewerService
 
@@ -22,6 +22,7 @@ class BiDisplay:
     def render(self):
         """Render the display"""
         layout = QGridLayout()
+        layout.setContentsMargins(0, 0, 0, 0)
         for region in self.plan.regions:
             viewer = viewerService.get(region.widget)
             for data in region.data_list:
