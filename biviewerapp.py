@@ -6,7 +6,7 @@ from PySide2.QtWidgets import QApplication
 
 if __name__ == '__main__':
     # Create the Qt Application
-    app = QApplication(sys.argv)
+    app = QApplication(["BioImageIT"])
 
     # load the file uri
     plan_uri = ""
@@ -19,6 +19,7 @@ if __name__ == '__main__':
     plan.load(plan_uri)
 
     display = BiDisplay(plan)
+    display.get_widget().setWindowTitle("BioImageIT")
     display.get_widget().show()
 
     sys.exit(app.exec_())
