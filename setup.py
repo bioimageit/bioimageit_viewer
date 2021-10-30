@@ -23,6 +23,6 @@ setup(
         "pyside2",
         "napari",
         "pandas",
-        "scikit-image"
+        "scikit-image>=0.18.3"
     ],
     )
