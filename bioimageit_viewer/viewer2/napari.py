@@ -1,3 +1,4 @@
+import PySide2.QtCore
 from PySide2.QtWidgets import (QVBoxLayout, QWidget, QTabWidget)
 
 import napari
@@ -9,6 +10,15 @@ class BiNapariViewer(QWidget):
         
         # napari widget
         self.viewer = napari.Viewer(show=False)
+
+        # move doc layers
+        dock_widget = self.viewer._window.qt_viewer.dockLayerControls
+        self.viewer._window._qt_window.addDockWidget(PySide2.QtCore.Qt.RightDockWidgetArea, dock_widget)
+
+        dock_widget_list = self.viewer._window.qt_viewer.dockLayerList
+        self.viewer._window._qt_window.addDockWidget(PySide2.QtCore.Qt.RightDockWidgetArea, dock_widget_list)
+
+        # add napari to widget
         layout = QVBoxLayout()
         layout.setContentsMargins(0, 0, 0, 0)
         self.setLayout(layout)
