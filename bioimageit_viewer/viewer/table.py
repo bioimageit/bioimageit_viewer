@@ -1,4 +1,4 @@
-from PySide2.QtWidgets import (QVBoxLayout, QWidget, QTabWidget, 
+from qtpy.QtWidgets import (QVBoxLayout, QWidget, QTabWidget, 
                                QTableWidget, QTableWidgetItem)
 
 from bioimageit_formats import FormatsAccess, formatsServices

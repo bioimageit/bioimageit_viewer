@@ -1,5 +1,5 @@
-import PySide2.QtCore
-from PySide2.QtWidgets import (QVBoxLayout, QWidget, QTabWidget)
+import qtpy.QtCore
+from qtpy.QtWidgets import (QVBoxLayout, QWidget, QTabWidget)
 
 import napari
 from bioimageit_formats import FormatsAccess, formatsServices
@@ -13,10 +13,10 @@ class BiNapariViewer(QWidget):
 
         # move doc layers
         dock_widget = self.viewer._window.qt_viewer.dockLayerControls
-        self.viewer._window._qt_window.addDockWidget(PySide2.QtCore.Qt.RightDockWidgetArea, dock_widget)
+        self.viewer._window._qt_window.addDockWidget(qtpy.QtCore.Qt.RightDockWidgetArea, dock_widget)
 
         dock_widget_list = self.viewer._window.qt_viewer.dockLayerList
-        self.viewer._window._qt_window.addDockWidget(PySide2.QtCore.Qt.RightDockWidgetArea, dock_widget_list)
+        self.viewer._window._qt_window.addDockWidget(qtpy.QtCore.Qt.RightDockWidgetArea, dock_widget_list)
 
         # add napari to widget
         layout = QVBoxLayout()
