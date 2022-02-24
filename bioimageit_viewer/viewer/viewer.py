@@ -1,11 +1,12 @@
 from qtpy.QtWidgets import (QVBoxLayout, QWidget, QTabWidget)
 
 from bioimageit_formats import FormatsAccess
+from bioimageit_framework.widgets import BiWidget, BiTabWidget
 from .napari import BiNapariViewer
 from .table import BiTableViewer
 
 
-class BiMultiViewer(QWidget):
+class BiMultiViewer(BiWidget):
     def __init__(self):
         super().__init__()
         
@@ -13,12 +14,11 @@ class BiMultiViewer(QWidget):
         self.napari_viewer = None
         self.table_viewer = None
 
-        # widget
         layout = QVBoxLayout()
+        self.widget.setLayout(layout)
         layout.setContentsMargins(0, 0, 0, 0)
-        self.tabWidget = QTabWidget()
-        layout.addWidget(self.tabWidget)
-        self.setLayout(layout)
+        self.tab = BiTabWidget()
+        layout.addWidget(self.tab.widget)
 
     def add_data(self, uri, data_name, format_name):
 
@@ -26,13 +26,15 @@ class BiMultiViewer(QWidget):
         viewer_name = format_info.viewer
 
         if viewer_name == 'napari':
-            if not self.napari_viewer:
+            if self.napari_viewer is None:
                 self.napari_viewer = BiNapariViewer()
-                self.tabWidget.addTab(self.napari_viewer, 'Images')
-            self.napari_viewer.add_data(uri, data_name, format_name)    
+                self.tab.add_tab(self.napari_viewer, 'Images', 'Data of type image')
+            self.napari_viewer.add_data(uri, data_name, format_name) 
+            self.tab.switch_tab('Images')   
 
         elif viewer_name == 'table':
-            if not self.table_viewer:
+            if self.table_viewer is None:
                 self.table_viewer = BiTableViewer()
-                self.tabWidget.addTab(self.table_viewer, 'Tables')
-            self.table_viewer.add_data(uri, data_name, format_name)     
+                self.tab.add_tab(self.table_viewer, 'Tables', 'Data of type table')
+            self.table_viewer.add_data(uri, data_name, format_name) 
+            self.tab.switch_tab('Tables')    

@@ -2,9 +2,11 @@ import qtpy.QtCore
 from qtpy.QtWidgets import (QVBoxLayout, QWidget, QTabWidget)
 
 import napari
+from bioimageit_framework.widgets import BiWidget
 from bioimageit_formats import FormatsAccess, formatsServices
 
-class BiNapariViewer(QWidget):
+
+class BiNapariViewer(BiWidget):
     def __init__(self):
         super().__init__()
         
@@ -21,7 +23,7 @@ class BiNapariViewer(QWidget):
         # add napari to widget
         layout = QVBoxLayout()
         layout.setContentsMargins(0, 0, 0, 0)
-        self.setLayout(layout)
+        self.widget.setLayout(layout)
         layout.addWidget(self.viewer._window._qt_window)
 
     def add_data(self, uri: str, data_name: str, format_name: str):

@@ -1,9 +1,11 @@
 from qtpy.QtWidgets import (QVBoxLayout, QWidget, QTabWidget, 
-                               QTableWidget, QTableWidgetItem)
+                            QTableWidget, QTableWidgetItem)
 
+from bioimageit_framework.widgets import BiWidget
 from bioimageit_formats import FormatsAccess, formatsServices
 
-class BiTableViewer(QWidget):
+
+class BiTableViewer(BiWidget):
     def __init__(self):
         super().__init__()
         
@@ -11,7 +13,7 @@ class BiTableViewer(QWidget):
         self.viewer = QTabWidget()
         layout = QVBoxLayout()
         layout.setContentsMargins(0, 0, 0, 0)
-        self.setLayout(layout)
+        self.widget.setLayout(layout)
         layout.addWidget(self.viewer)
 
     def add_data(self, uri: str, data_name: str, format_name: str):
