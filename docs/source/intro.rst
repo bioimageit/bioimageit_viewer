@@ -1,21 +1,36 @@
 Introduction
 ============
 
-BioImageIT GUI is a desktop graphical user interface for the ``bioimageit_core`` library
+``bioimageit_viewer`` is a desktop graphical user interface to visualize scientific data. It is
+based on ``bioimageit_formats`` to manage the data formats and the visualisation is displayed using
+python viewers like QtTableView or napari
 
 Context
 -------
-BioImageIT GUI has been developed by **Sylvain Prigent** in a project funded by
+``bioimageit_viewer`` has been developed by **Sylvain Prigent** in a project funded by
 `France-BioImaging <https://france-bioimaging.org/>`_
-BioImageIT GUI is the desktop graphical interface for the project. Please find all the other developped tools
+``bioimageit_viewer`` is part of the BioImageIT project. Please find all the other developed tools
 `here <https://github.com/bioimageit>`_
 
-BioImageIT GUI
---------------
-BioImageIT GUI is a python3 Qt application. It provides a graphical user interface for scientific experiment data
-management, analysis and visualisation.
-It is made of three components:
+BioImageIT Viewer
+-----------------
+BioImageIT Viewer is a python3 Qt application. It provides a graphical user interface for scientific
+data visualisation.
+It is made of a main widget called ``BiMultiViewer`` that can visualize the data format available in
+``bioimageit_formats``:
 
-* **Browser**: the browser application allows to navigate through the database of data, visualise data and annotate data
-* **Tool finder**: the finder application is a graphical interface to navigate the data processing tools and their documentation organized into toolboxes.
-* **Tool runner**: the runner application is a graphical interface to execute processed on data. Data can be processed individually, by batch from a directory and by batch from an annotated experiment dataset
+.. code-block:: python
+
+    from bioimageit_formats import FormatsAccess
+    from bioimageit_viewer.viewer import BiMultiViewer
+
+    # initialize the formats
+    FormatsAccess('formats.json')
+
+    # add an image
+    viewer.add_data('myimagefile.tif', 'myimage', 'imagetiff')
+
+    # start the viewer
+    app = QApplication(["BioImageIT viewer"])
+    viewer.show()
+    sys.exit(app.exec_())
