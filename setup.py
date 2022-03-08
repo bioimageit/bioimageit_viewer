@@ -20,7 +20,8 @@ setup(
     license=license,
     packages=find_packages(exclude=('tests', 'docs')),
     install_requires=[
-        "pyside2",
+        "bioimageit_framework>=0.1.0",
+        "bioimageit_formats>=0.1.0",
         "napari",
         "pandas",
         "scikit-image>=0.18.3"
