@@ -11,6 +11,8 @@ This section contains the instructions to install ``bioimageit_viewer`` for deve
     source .env/bin/activate
     git clone https://github.com/bioimageit/bioimageit_formats.git
     pip install -e ./bioimageit_formats
+    git clone https://github.com/bioimageit/bioimageit_framework.git
+    pip install -e ./bioimageit_framework
     git clone https://github.com/bioimageit/bioimageit_viewer.git
     pip install -e ./bioimageit_viewer
 
