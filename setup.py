@@ -11,7 +11,7 @@ with open('LICENSE') as f:
 
 setup(
     name='bioimageit_viewer',
-    version='0.0.2',
+    version='0.1.0',
     description='Gui application for BioImageIT data viewer',
     long_description=readme,
     author='Sylvain Prigent',
