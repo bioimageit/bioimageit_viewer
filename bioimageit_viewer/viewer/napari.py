@@ -26,6 +26,13 @@ class BiNapariViewer(BiWidget):
         self.widget.setLayout(layout)
         layout.addWidget(self.viewer._window._qt_window)
 
+    def add_loaded_data(self, container, data_name: str, format_name: str):
+        if format_name == 'imagetiff':
+            for c in container:
+                self.viewer.add_image(c, name=f'{data_name} {c}')
+        else:
+            print('error NapariViewer cannot display the format ' + format_name)    
+
     def add_data(self, uri: str, data_name: str, format_name: str):
         format_info = FormatsAccess.instance().get(format_name) 
         data = formatsServices.get(format_info.reader).read(uri)

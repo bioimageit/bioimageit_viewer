@@ -20,6 +20,24 @@ class BiMultiViewer(BiWidget):
         self.tab = BiTabWidget()
         layout.addWidget(self.tab.widget)
 
+    def add_loaded_data(self, container, data_name, format_name):
+        format_info = FormatsAccess.instance().get(format_name) 
+        viewer_name = format_info.viewer
+
+        if viewer_name == 'napari':
+            if self.napari_viewer is None:
+                self.napari_viewer = BiNapariViewer()
+                self.tab.add_tab(self.napari_viewer, 'Images', 'Data of type image')
+            self.napari_viewer.add_loaded_data(container, data_name, format_name) 
+            self.tab.switch_tab('Images') 
+
+        elif viewer_name == 'table':
+            if self.table_viewer is None:
+                self.table_viewer = BiTableViewer()
+                self.tab.add_tab(self.table_viewer, 'Tables', 'Data of type table')
+            self.table_viewer.add_loaded_data(container, data_name) 
+            self.tab.switch_tab('Tables') 
+
     def add_data(self, uri, data_name, format_name):
 
         format_info = FormatsAccess.instance().get(format_name) 
