@@ -28,8 +28,8 @@ class BiNapariViewer(BiWidget):
 
     def add_loaded_data(self, container, data_name: str, format_name: str):
         if format_name == 'imagetiff':
-            for c in container:
-                self.viewer.add_image(c, name=f'{data_name} {c}')
+            for idx, c in enumerate(container):
+                self.viewer.add_image(c, name=f'{data_name} channel {idx}')
         else:
             print('error NapariViewer cannot display the format ' + format_name)    
 
