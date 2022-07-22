@@ -12,6 +12,7 @@ class BiNapariViewer(BiWidget):
         
         # napari widget
         self.viewer = napari.Viewer(show=False)
+        self.viewer.window._qt_window.menuBar().deleteLater()
 
         # move doc layers
         dock_widget = self.viewer._window.qt_viewer.dockLayerControls
