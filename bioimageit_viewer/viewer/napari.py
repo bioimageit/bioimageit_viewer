@@ -2,6 +2,7 @@ import qtpy.QtCore
 from qtpy.QtWidgets import (QVBoxLayout, QWidget, QTabWidget)
 
 import napari
+import numpy as np
 from bioimageit_framework.widgets import BiWidget
 from bioimageit_formats import FormatsAccess, formatsServices
 
@@ -29,8 +30,11 @@ class BiNapariViewer(BiWidget):
 
     def add_loaded_data(self, container, data_name: str, format_name: str):
         if format_name == 'imagetiff':
-            for c in container:
-                self.viewer.add_image(c, name=f'{data_name} {c}')
+            if isinstance(container, np.ndarray) and container.ndim == 2:
+                self.viewer.add_image(container, name=f'{data_name} {container}')
+            else:
+                for c in container: 
+                    self.viewer.add_image(c, name=f'{data_name} {c}')
         elif format_name == 'imagezarr':
             for c in container:
                 self.viewer.add_image(c, name=f'{data_name} {c}')
