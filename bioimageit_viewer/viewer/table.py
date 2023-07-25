@@ -30,14 +30,16 @@ class BiTableViewer(BiWidget):
         # analys the content of the table
         tableWidget = QTableWidget()
 
+        tableHeader = container.columns.values.tolist()
+
         # data frame case
-        col_count = len(container.head())
-        tableWidget.setColumnCount(col_count+1)
-        tableWidget.setHorizontalHeaderLabels(container.head())
+        col_count = len(tableHeader)
+        tableWidget.setColumnCount(col_count)
+        tableWidget.setHorizontalHeaderLabels(tableHeader)
 
         tableWidget.setRowCount(len(container))
         for i in range(len(container)):
-            for j in range(col_count+1):
+            for j in range(col_count):
                 tableWidget.setItem(i, j, QTableWidgetItem(str(container.iloc[i,j])))
         self.viewer.addTab(tableWidget, data_name)
 
