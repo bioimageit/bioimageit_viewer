@@ -11,7 +11,7 @@ with open('LICENSE') as f:
 
 setup(
     name='bioimageit_viewer',
-    version="0.1.3",
+    version="0.2.0",
     author="Sylvain Prigent and BioImageIT team",
     author_email="bioimageit@gmail.com",
     description='Gui application for BioImageIT data viewer',
@@ -20,8 +20,8 @@ setup(
     license=license,
     packages=find_packages(exclude=('tests', 'docs')),
     install_requires=[
-        "bioimageit_framework>=0.1.3",
-        "bioimageit_formats>=0.1.3",
+        "bioimageit_framework>=0.2.0",
+        "bioimageit_formats>=0.2.0",
         "napari",
         "pandas",
         "scikit-image>=0.18.3"
